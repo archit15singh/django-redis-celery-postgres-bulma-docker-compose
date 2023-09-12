@@ -1,0 +1,48 @@
+/* CSS Reset */
+html, body, div, h1, h2, h3, p, img, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Application CSS */
+.hero-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.form-canvas {
+    width: 50%;
+}
+
+.field {
+  padding: 0.5rem 0.5rem;
+}
+
+.clickable-row:hover {
+  cursor: pointer;
+}
+
+.card {
+  width: 50%;
+  margin: 1rem;
+}

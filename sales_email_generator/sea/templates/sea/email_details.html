@@ -1,0 +1,63 @@
+{% extends 'sea/base.html' %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="title is-4" style="color: #1abc9c">Email Details</h1>
+    
+    <table class="table is-bordered is-striped">
+        <tr>
+            <th>Subject:</th>
+            <td>{{ email.subject }}</td>
+        </tr>
+        <tr>
+            <th>Body:</th>
+            <td>{{ email.body }}</td>
+        </tr>
+    </table>
+
+    <table class="table is-bordered is-striped">
+        <tr>
+            <th>Prospect:</th>
+            <td>{{ email.prospect.name }}</td>
+        </tr>
+        <tr>
+            <th>Website:</th>
+            <td>{{ email.prospect.website }}</td>
+        </tr>
+        <tr>
+            <th>Industry:</th>
+            <td>{{ email.prospect.industry }}</td>
+        </tr>
+        <tr>
+            <th>History:</th>
+            <td>{{ email.prospect.history }}</td>
+        </tr>
+        <tr>
+            <th>Mission:</th>
+            <td>{{ email.prospect.mission }}</td>
+        </tr>
+        <tr>
+            <th>Core Values:</th>
+            <td>{{ email.prospect.core_values }}</td>
+        </tr>
+        <tr>
+            <th>Solutions Offered:</th>
+            <td>{{ email.prospect.solutions_offered }}</td>
+        </tr>
+        <tr>
+            <th>Client Testimonials:</th>
+            <td>{{ email.prospect.client_testimonials }}</td>
+        </tr>
+        <tr>
+            <th>Value Proposition:</th>
+            <td>{{ email.prospect.value_proposition }}</td>
+        </tr>
+    </table>
+    
+    <div class="control">
+        <a href="{% url 'list_email' %}">
+            <button class="button is-link is-primary">Back to Email List</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

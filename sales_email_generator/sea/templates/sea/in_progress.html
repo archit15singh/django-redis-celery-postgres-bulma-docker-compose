@@ -1,0 +1,53 @@
+{% extends 'sea/base.html' %}
+
+{% block content %}
+<div class="content is-small">
+  <h1>In Progress (Refreshes every 5 seconds)</h1>
+</div>
+{% for background_job in background_jobs %}
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          {% if background_job.status == "running" %}
+            <span class="icon has-text-info is-left is-large">
+              <i class="fas fa-spinner fa-pulse fa-3x"></i>
+            </span>
+          {% elif background_job.status == "done" %}
+            <span class="icon has-text-success is-left is-large">
+              <i class="fas fa-check-square fa-3x"></i>
+            </span>
+          {% elif background_job.status == "error" %}
+            <span class="icon has-text-danger is-left is-large">
+              <i class="fas fa-exclamation-circle fa-3x"></i>
+            </span>
+          {% endif %}
+        </div>
+          
+        <div class="media-content">
+          <p class="title is-4">{{ background_job.prospect.name }}</p>
+          <p class="subtitle is-6">{{ background_job.prospect.industry }}</p>
+        </div>
+      </div>
+    
+      <div class="content">
+        <p>
+          {{ background_job.email.body }}
+          <br>
+          <time class="has-text-info">{{ background_job.created_at }}</time>
+        </p>
+      </div>
+    
+    </div>
+  </div>
+{% endfor %}
+<script>
+  function autoRefresh() {
+      setTimeout(function () {
+          location.reload();
+      }, 5000);
+  }
+
+  window.onload = autoRefresh;
+</script>
+{% endblock %}

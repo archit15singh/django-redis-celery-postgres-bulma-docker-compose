@@ -1,0 +1,31 @@
+{% load static %}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{% url 'list_email' %}">
+        <img class="image" src="{% static 'images/favicon.png' %}">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <a href="{% url 'create_email' %}" class="navbar-item">
+          Create
+        </a>
+  
+        <a href="{% url 'in_progress' %}" class="navbar-item">
+          In Progress
+        </a>
+    </div>
+      
+</div>
+
+      </div>
+    </div>
+  </nav>

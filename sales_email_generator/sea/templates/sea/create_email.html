@@ -1,0 +1,85 @@
+{% extends 'sea/base.html' %}
+
+{% block content %}
+  <div class="content is-small">
+    <h1>Generate Emails</h1>
+  </div>
+    <form method="post" action="{% url 'create_email' %}" class="form-canvas" id="createEmailForm">
+      {% csrf_token %}
+          <div class="field is-horizontal is-desktop">
+            <div class="field-label is-normal">
+              <label class="label is-large" for="prospect_name">Prospect Name</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input class="input is-large" name="prospect_name" type="text">
+                  <span class="icon is-large is-left">
+                    <i class="fas fa-building"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal is-desktop">
+            <div class="field-label is-normal">
+              <label class="label is-large" for="prospect_website">Prospect Website</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input class="input is-large" name="prospect_website" type="text">
+                  <span class="icon is-large is-left">
+                    <i class="fa fa-globe"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal is-desktop">
+            <div class="field-label is-normal">
+              <label class="label is-large" for="email_type">Email Type</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <div class="select is-large">
+                    <select id="email_type" name="email_type">
+                      <option value="introductory">Introductory</option>
+                    </select>                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>          
+
+          <div class="field is-horizontal is-desktop">
+            <div class="field-label is-normal">
+              <label class="label is-large" for="job_description">Job Description</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control has-icons-left">
+                  <textarea class="textarea is-large" rows="10" placeholder="✍️ Enter job description..." name="job_description"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="field is-horizontal is-desktop">
+            <div class="field-label"></div>
+            <div class="field-body">
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link is-large" type="submit">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light is-large" onclick="resetForm()">Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </form>
+{% endblock %}

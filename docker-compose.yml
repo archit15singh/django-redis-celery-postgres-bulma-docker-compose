@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  web:
+    restart: unless-stopped
+    volumes:
+      - static:/static
+    env_file:
+      - .env
+    build:
+      context: .
+    entrypoint: /entry.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  nginx:
+    restart: always
+    build: ./nginx
+    volumes:
+      - static:/static
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=theroot
+    ports:
+      - '5432:5432'
+    volumes: 
+      - ./db:/var/lib/postgresql/data
+  
+  redis:
+    image: 'redis:alpine'
+    hostname: redis
+    restart: always
+  
+  celery:
+      restart: unless-stopped
+      build:
+          context: .
+      entrypoint: /worker.sh
+      volumes:
+          - static:/static
+      depends_on:
+          - web
+          - redis
+
+volumes:
+  db_init_scripts:
+  static:
+  db:
+    driver: local

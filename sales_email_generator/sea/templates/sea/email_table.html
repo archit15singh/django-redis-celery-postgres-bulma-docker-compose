@@ -1,0 +1,28 @@
+{% extends 'sea/base.html' %}
+
+{% block content %}
+<div class="content is-small">
+    <h1>Generated Emails</h1>
+  </div>
+<table id="email-table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>Prospect</th>
+            <th>Generated Emails</th>
+            <th>Industry</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for email in emails %}
+        <tr class="clickable-row" onclick="window.location.href='{% url 'get_email' email.id %}'">
+            <td>{{ email.prospect.name }}</td>
+            <td>{{ email.body }}</td>
+            <td>{{ email.prospect.industry }}</td>
+            <td>{{ email.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
